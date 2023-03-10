@@ -15,6 +15,7 @@ jobs:
       - name: Lint
         run: npm run lint
   test:
+    needs: lint
     runs-on: ubuntu-latest
     steps:
       - name: Download code from repository
@@ -28,6 +29,7 @@ jobs:
       - name: Test
         run: npm run test
   build:
+    needs: [lint, test]
     runs-on: ubuntu-latest
     steps:
       - name: Download code from repository
