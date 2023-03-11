@@ -1,5 +1,11 @@
 name: Lint, Test and Deploy
-on: [push, workflow_dispatch]
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+      - 'dev-*'
+      - 'feat/**'
 jobs:
   lint:
     runs-on: ubuntu-latest
