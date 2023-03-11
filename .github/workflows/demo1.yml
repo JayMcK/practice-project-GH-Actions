@@ -1,0 +1,24 @@
+name: Demo 1
+on:
+  pull_request:
+    types: opened
+  workflow_dispatch:
+jobs:
+  deploy:
+    steps:
+      - name: Download code from repository
+        uses: actions/checkout@v3
+      - name: Install Node JS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Test
+        run: npm run test
+      - name: Build
+        run: npm run build
+      - name: Deploy
+        run: echo "Deploying..."
